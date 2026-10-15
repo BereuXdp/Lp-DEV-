@@ -1,0 +1,11 @@
+# Material de referência (não faz parte do site)
+Referencias/
+Imagens/
+assets/ref-logo-dark.png
+
+# Configuração local do editor/Claude
+.claude/
+
+# Sistema
+.DS_Store
+Thumbs.db

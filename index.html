@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dev+ | Soluções SaaS e Sistemas Sob Medida</title>
+  <meta name="description" content="A Dev+ desenvolve plataformas SaaS, sistemas web, dashboards, integrações e automações sob medida para empresas que querem escalar com tecnologia.">
+  <meta name="theme-color" content="#07090a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Logo Dev+ (letras usam currentColor; o "+" usa o gradiente da marca) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="devmais-plus" x1="0" y1="470" x2="0" y2="608" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#0ae087"/>
+        <stop offset=".55" stop-color="#14935c"/>
+        <stop offset="1" stop-color="#112a22"/>
+      </linearGradient>
+      <symbol id="logo-plus" viewBox="718 466 159 146">
+        <g fill="url(#devmais-plus)">
+          <path d="M786 470H821C819 500 812 525 795 537C780 550 760 556 722 552L729 518C750 525 770 525 778 518C787 510 788 490 786 470Z"/>
+          <path d="M809 608H774C776 578 783 553 800 541C815 528 835 522 873 526L866 560C845 553 825 553 817 560C808 568 807 588 809 608Z"/>
+        </g>
+      </symbol>
+      <symbol id="logo" viewBox="203 453 674 173">
+        <g fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round">
+          <path d="M210 460H275A79.5 79.5 0 0 1 275 619H210Z"/>
+          <path d="M376 460H496V495H415V521H487V558H415V583H496V619H376Z"/>
+          <path d="M519 460H560L606 562L652 460H695L627 619H588Z"/>
+        </g>
+        <use href="#logo-plus" x="718" y="466" width="159" height="146"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- NAV: pílula flutuante -->
+  <header class="nav" id="nav">
+    <div class="nav__pill">
+      <a href="#inicio" class="nav__brand" aria-label="Dev+ início">
+        <svg role="img" aria-label="Dev+"><use href="#logo-plus"/></svg>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Principal">
+        <a href="#solucoes">Soluções</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#processo">Processo</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#faq">FAQ</a>
+        <div class="nav__mobile-cta">
+          <a href="https://wa.me/558521809953?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dev%2B%20e%20quero%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.1c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.24.58.82 2 .89 2.15.07.14.12.31.02.5-.1.2-.14.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.3-.13.59.17.29.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.3 1.42.29.14.46.12.63-.07.17-.2.72-.84.92-1.13.19-.29.38-.24.65-.14.27.1 1.7.8 1.99.95.29.14.48.22.55.34.07.12.07.7-.17 1.38Z"/></svg>WhatsApp</a>
+          <a href="mailto:contato@devmais.com"><svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>E-mail</a>
+        </div>
+      </nav>
+      <div class="nav__contact" id="navContact">
+        <button class="nav__mail" id="contactToggle" aria-expanded="false" aria-controls="contactMenu">Entrar em contato</button>
+        <div class="contact-menu" id="contactMenu">
+          <a href="https://wa.me/558521809953?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dev%2B%20e%20quero%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.1c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.24.58.82 2 .89 2.15.07.14.12.31.02.5-.1.2-.14.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.3-.13.59.17.29.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.3 1.42.29.14.46.12.63-.07.17-.2.72-.84.92-1.13.19-.29.38-.24.65-.14.27.1 1.7.8 1.99.95.29.14.48.22.55.34.07.12.07.7-.17 1.38Z"/></svg><span><b>WhatsApp</b><small>Resposta rápida</small></span></a>
+          <a href="mailto:contato@devmais.com"><svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span><b>E-mail</b><small>contato@devmais.com</small></span></a>
+        </div>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <a href="#inicio" class="to-top" id="toTop" aria-label="Voltar ao início da página">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </a>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg" id="heroBg" aria-hidden="true">
+        <div class="hero__beam">
+          <span class="hero__beam-glow"></span>
+          <span class="hero__smoke"></span>
+          <span class="hero__pixels"></span>
+          <span class="hero__beam-floor"></span>
+          <span class="hero__beam-flare"></span>
+          <span class="hero__beam-core"></span>
+          <span class="hero__beam-hit"></span>
+          <span class="hero__particles" id="heroParticles"></span>
+        </div>
+        <div class="hero__grid-bg"></div>
+        <div class="hero__spot"></div>
+      </div>
+
+      <div class="container hero__content" id="heroContent">
+        <span class="eyebrow intro" style="--d:.25s">Tecnologia, escala e parceria estratégica</span>
+        <h1 class="hero__title" id="heroTitle">Soluções SaaS que <span class="text-glow">impulsionam</span> negócios.</h1>
+        <p class="hero__lead intro" style="--d:1.05s">Criamos sistemas web, plataformas digitais e automações sob medida para empresas que buscam escalar com tecnologia.</p>
+        <div class="hero__ctas intro" style="--d:1.2s">
+          <a href="#contato" class="btn btn--light">Começar projeto <span aria-hidden="true">→</span></a>
+          <a href="#solucoes" class="btn btn--ghost">Conhecer soluções</a>
+        </div>
+      </div>
+
+      <!-- Product mockup -->
+      <div class="container hero__mock-wrap" id="heroMock">
+        <div class="mock" id="mock" aria-label="Prévia do painel DevMais Cloud Suite" role="img">
+          <aside class="mock__side">
+            <div class="mock__logo"><svg><use href="#logo-plus"/></svg></div>
+            <div class="mock__nav">
+              <span class="is-active">Visão geral</span>
+              <span>Pipelines</span>
+              <span>Integrações</span>
+              <span>Automações</span>
+              <span>Analytics</span>
+            </div>
+            <div class="mock__side-foot">
+              <span class="dot dot--live"></span> Todos os sistemas operando
+            </div>
+          </aside>
+          <div class="mock__main">
+            <div class="mock__top">
+              <div>
+                <small>DevMais Cloud Suite</small>
+                <strong>Visão geral da operação</strong>
+              </div>
+              <div class="mock__chips">
+                <span class="chip chip--green">Deploy seguro</span>
+                <span class="chip">Últimos 30 dias</span>
+              </div>
+            </div>
+            <div class="mock__stats">
+              <div class="stat"><small>Eficiência operacional</small><strong data-count="148" data-prefix="+" data-suffix="%" data-decimals="0">+148%</strong><span class="stat__trend">▲ 12% vs. mês anterior</span></div>
+              <div class="stat"><small>Disponibilidade</small><strong data-count="99.9" data-suffix="%" data-decimals="1">99.9%</strong><span class="stat__trend">SLA garantido</span></div>
+              <div class="stat"><small>Monitoramento</small><strong>24/7</strong><span class="stat__trend">Alertas em tempo real</span></div>
+            </div>
+            <div class="mock__body">
+              <div class="mock__chart">
+                <div class="mock__chart-head"><span>Requisições processadas</span><span class="chip chip--green">ao vivo</span></div>
+                <div class="chart-plot">
+                <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#22c55e" stop-opacity=".45"/>
+                      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path class="chart-area" d="M0,120 C40,110 60,96 90,100 C120,104 140,80 170,74 C200,68 220,84 250,60 C280,36 300,50 330,34 C360,18 380,22 400,10 L400,140 L0,140 Z" fill="url(#area)"/>
+                  <path class="chart-line" d="M0,120 C40,110 60,96 90,100 C120,104 140,80 170,74 C200,68 220,84 250,60 C280,36 300,50 330,34 C360,18 380,22 400,10" fill="none" stroke="#4ade80" stroke-width="2.5"/>
+                </svg>
+                <span class="chart-dot" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="mock__feed">
+                <div class="feed__item"><span class="tag tag--green">API Gateway</span><p>Latência média <b id="liveLatency">38</b>ms</p></div>
+                <div class="feed__item"><span class="tag tag--amber">Automação</span><p><b id="liveTasks">1.204</b> tarefas executadas hoje</p></div>
+                <div class="feed__item"><span class="tag tag--blue">Analytics</span><p>Relatório semanal pronto</p></div>
+                <div class="feed__item"><span class="tag">Pipeline</span><p>Pronto para escala ✓</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK MARQUEE -->
+    <section class="marquee" aria-label="Tecnologias que usamos">
+      <p class="marquee__label">Stack moderna, pronta para operação crítica</p>
+      <div class="marquee__track">
+        <div class="marquee__row">
+          <span>React</span><span>Next.js</span><span>Node.js</span><span>TypeScript</span><span>PostgreSQL</span><span>AWS</span><span>Docker</span><span>Python</span><span>Stripe</span><span>REST & GraphQL</span><span>Supabase</span><span>Vercel</span>
+        </div>
+        <div class="marquee__row" aria-hidden="true">
+          <span>React</span><span>Next.js</span><span>Node.js</span><span>TypeScript</span><span>PostgreSQL</span><span>AWS</span><span>Docker</span><span>Python</span><span>Stripe</span><span>REST & GraphQL</span><span>Supabase</span><span>Vercel</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS: bento (Huly MetaBrain) -->
+    <section class="section section--dark" id="diferenciais">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Diferenciais</span>
+          <h2>Tecnologia sob medida com padrão de produto premium.</h2>
+          <p>A Dev+ combina engenharia, visão estratégica e execução refinada para construir soluções digitais confiáveis, escaláveis e prontas para o próximo estágio do seu negócio.</p>
+        </header>
+
+        <div class="bento">
+          <article class="bento__card bento__card--wide reveal glow-green" data-aos="left">
+            <div class="bento__text">
+              <h3>Desenvolvimento SaaS</h3>
+              <p>Produtos digitais preparados para aquisição, retenção e crescimento contínuo.</p>
+            </div>
+            <div class="mini-funnel" aria-hidden="true">
+              <div style="--w:100%"><span>Visitantes</span><b>12.4k</b></div>
+              <div style="--w:72%"><span>Cadastros</span><b>3.1k</b></div>
+              <div style="--w:48%"><span>Ativos</span><b>1.9k</b></div>
+              <div style="--w:30%"><span>Pagantes</span><b>840</b></div>
+            </div>
+          </article>
+
+          <article class="bento__card bento__card--stat reveal" data-aos="zoom">
+            <div class="ring" aria-hidden="true"><span>99.9</span><small>% uptime</small></div>
+            <h3>Segurança e performance</h3>
+            <p>Boas práticas de engenharia, observabilidade e foco em estabilidade desde o início.</p>
+          </article>
+
+          <article class="bento__card reveal glow-amber" data-aos="spin-left">
+            <h3>Sistemas sob medida</h3>
+            <p>Arquiteturas feitas para o fluxo real da sua operação, sem improviso.</p>
+            <div class="mini-flow" aria-hidden="true">
+              <span>Pedido</span><i></i><span>Aprovação</span><i></i><span class="is-on">Faturado</span>
+            </div>
+          </article>
+
+          <article class="bento__card reveal" data-aos="zoom-down">
+            <h3>Cloud e integrações</h3>
+            <p>Conectamos APIs, serviços e infraestrutura para manter tudo fluindo com escala.</p>
+            <div class="mini-nodes" aria-hidden="true">
+              <span>ERP</span><span>CRM</span><span class="is-hub"><svg><use href="#logo-plus"/></svg></span><span>Pagamentos</span><span>BI</span>
+            </div>
+          </article>
+
+          <article class="bento__card reveal glow-green" data-aos="spin-right">
+            <h3>Automação de processos</h3>
+            <p>Reduza tarefas manuais e ganhe velocidade com rotinas inteligentes e confiáveis.</p>
+            <div class="mini-toggle" aria-hidden="true">
+              <div><span>Enviar NF automaticamente</span><i class="on"></i></div>
+              <div><span>Lembrete de cobrança</span><i class="on"></i></div>
+              <div><span>Relatório diário</span><i></i></div>
+            </div>
+          </article>
+
+          <article class="bento__card bento__card--wide reveal glow-blue" data-aos="right">
+            <div class="bento__text">
+              <h3>Escalabilidade</h3>
+              <p>Soluções desenhadas para suportar evolução de times, usuários e receita.</p>
+            </div>
+            <div class="mini-bars" aria-hidden="true">
+              <i style="--h:22%"></i><i style="--h:30%"></i><i style="--h:28%"></i><i style="--h:42%"></i><i style="--h:50%"></i><i style="--h:58%"></i><i style="--h:66%"></i><i style="--h:80%"></i><i style="--h:94%"></i>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUÇÕES: palcos (Discord) -->
+    <section class="section section--deep" id="solucoes">
+      <div class="container">
+        <header class="section-head section-head--center reveal">
+          <span class="eyebrow">O que fazemos</span>
+          <h2>Soluções digitais desenhadas para operação, crescimento e vantagem competitiva.</h2>
+          <p>Do institucional ao core do produto, entregamos experiências modernas e infraestrutura preparada para acompanhar a evolução do seu negócio.</p>
+        </header>
+
+        <!-- Stage 1 -->
+        <article class="stage stage--green reveal" data-aos="left">
+          <div class="stage__copy">
+            <span class="stage__num">01</span>
+            <h3>Plataformas SaaS</h3>
+            <p>Produtos digitais com visão de negócio, onboarding claro e base pronta para crescimento.</p>
+            <ul class="checks">
+              <li>Assinaturas e cobrança recorrente</li>
+              <li>Multi-tenant e controle de acesso</li>
+              <li>Onboarding que converte</li>
+            </ul>
+          </div>
+          <div class="stage__visual">
+            <div class="screen">
+              <div class="screen__bar"><i></i><i></i><i></i><span>app.seuproduto.com</span></div>
+              <div class="screen__body plans">
+                <div class="plan"><small>Starter</small><strong>R$ 97</strong><span>/mês</span></div>
+                <div class="plan plan--hot"><small>Pro</small><strong>R$ 297</strong><span>/mês</span><em>Mais popular</em></div>
+                <div class="plan"><small>Enterprise</small><strong>Sob consulta</strong></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Stage 2 -->
+        <article class="stage stage--blue stage--reverse reveal" data-aos="right">
+          <div class="stage__copy">
+            <span class="stage__num">02</span>
+            <h3>Dashboards e analytics</h3>
+            <p>Painéis de gestão com dados acionáveis para decisões rápidas e acompanhamento de metas.</p>
+            <ul class="checks">
+              <li>KPIs em tempo real</li>
+              <li>Metas e alertas automáticos</li>
+              <li>Dados de várias fontes num só lugar</li>
+            </ul>
+          </div>
+          <div class="stage__visual">
+            <div class="screen">
+              <div class="screen__bar"><i></i><i></i><i></i><span>painel.suaempresa.com</span></div>
+              <div class="screen__body dash">
+                <div class="dash__kpi"><small>Receita do mês</small><strong>R$ 482k</strong><span class="up">▲ 18%</span></div>
+                <div class="dash__kpi"><small>Meta atingida</small><strong>87%</strong><div class="progress"><i style="--p:87%"></i></div></div>
+                <div class="dash__chart">
+                  <i style="--h:40%"></i><i style="--h:55%"></i><i style="--h:48%"></i><i style="--h:70%"></i><i style="--h:62%"></i><i style="--h:84%"></i><i style="--h:92%"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Stage 3 -->
+        <article class="stage stage--amber reveal" data-aos="left">
+          <div class="stage__copy">
+            <span class="stage__num">03</span>
+            <h3>Integrações com APIs</h3>
+            <p>Fluxos conectados entre plataformas, ERPs, CRMs, gateways e serviços em nuvem.</p>
+            <ul class="checks">
+              <li>ERPs, CRMs e gateways de pagamento</li>
+              <li>Webhooks e sincronização em tempo real</li>
+              <li>Monitoramento de cada chamada</li>
+            </ul>
+          </div>
+          <div class="stage__visual">
+            <div class="screen">
+              <div class="screen__bar"><i></i><i></i><i></i><span>integracoes / logs</span></div>
+              <div class="screen__body logs">
+                <p><span class="m m--post">POST</span>/v1/pedidos <b class="ok">201</b><em>42ms</em></p>
+                <p><span class="m m--get">GET</span>/v1/clientes/8812 <b class="ok">200</b><em>18ms</em></p>
+                <p><span class="m m--post">POST</span>/webhooks/pagamento <b class="ok">200</b><em>61ms</em></p>
+                <p><span class="m m--put">PUT</span>/v1/estoque/sync <b class="ok">200</b><em>95ms</em></p>
+                <p><span class="m m--get">GET</span>/v1/notas-fiscais <b class="ok">200</b><em>27ms</em></p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MAIS SOLUÇÕES: faixa clara (Genie) -->
+    <section class="section section--light">
+      <div class="container">
+        <header class="section-head section-head--center reveal">
+          <span class="eyebrow eyebrow--dark">E tem mais</span>
+          <h2>Tudo o que sua operação precisa para rodar e crescer.</h2>
+        </header>
+        <div class="feature-grid">
+          <article class="feature-card reveal" data-aos="card">
+            <div class="feature-card__media">
+              <img src="assets/cards/sites.jpg" alt="Tablet exibindo um site institucional" loading="lazy" style="object-position:50% 38%">
+              <ul class="feature-card__chips">
+                <li><span aria-hidden="true">✦</span>Design premium</li>
+                <li><span aria-hidden="true">⚡</span>Alta performance</li>
+                <li><span aria-hidden="true">🔍</span>SEO otimizado</li>
+                <li><span aria-hidden="true">📱</span>100% responsivo</li>
+              </ul>
+            </div>
+            <div class="feature-card__body">
+              <h3>Sites institucionais</h3>
+              <p>Presença digital <strong>premium</strong> para posicionar marca, gerar <strong>autoridade</strong> e converter oportunidades.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal" data-aos="card">
+            <div class="feature-card__media">
+              <img src="assets/cards/sistemas.jpg" alt="Notebook exibindo um painel de gestão" loading="lazy" style="object-position:35% 45%">
+              <ul class="feature-card__chips">
+                <li><span aria-hidden="true">📊</span>Dashboards</li>
+                <li><span aria-hidden="true">🔐</span>Controle de acesso</li>
+                <li><span aria-hidden="true">🔗</span>Integrado ao ERP</li>
+                <li><span aria-hidden="true">📈</span>Relatórios</li>
+              </ul>
+            </div>
+            <div class="feature-card__body">
+              <h3>Sistemas internos</h3>
+              <p>Operações centralizadas em <strong>sistemas robustos</strong>, integrados e adaptados ao seu processo.</p>
+            </div>
+          </article>
+          <article class="feature-card reveal" data-aos="card">
+            <div class="feature-card__media">
+              <img src="assets/cards/automacoes.jpg" alt="Diagrama de integrações com ferramentas de IA" loading="lazy" style="object-position:50% 45%">
+              <ul class="feature-card__chips">
+                <li><span aria-hidden="true">🤖</span>IA integrada</li>
+                <li><span aria-hidden="true">⏱️</span>Rodando 24/7</li>
+                <li><span aria-hidden="true">✅</span>Aprovações automáticas</li>
+                <li><span aria-hidden="true">♻️</span>Zero retrabalho</li>
+              </ul>
+            </div>
+            <div class="feature-card__body">
+              <h3>Automações empresariais</h3>
+              <p>Automatize <strong>aprovações, atendimento</strong> e rotinas administrativas nas etapas críticas do negócio.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESSO: faixa clara -->
+    <section class="section section--light" id="processo">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow eyebrow--dark">Processo</span>
+          <h2>Método claro para transformar visão de negócio em produto digital.</h2>
+          <p>Cada fase é estruturada para reduzir risco, acelerar decisões e entregar uma solução consistente do diagnóstico à evolução.</p>
+        </header>
+        <ol class="steps">
+          <li class="step reveal" data-aos="zoom-soft"><span>01</span><h3>Diagnóstico</h3><p>Entendemos seu negócio, gargalos e objetivos antes de qualquer linha de código.</p></li>
+          <li class="step reveal" data-aos="zoom-soft"><span>02</span><h3>Planejamento</h3><p>Escopo, prioridades e cronograma definidos com você, sem surpresas.</p></li>
+          <li class="step reveal" data-aos="zoom-soft"><span>03</span><h3>Design da solução</h3><p>Fluxos e interfaces validados para uma experiência fluida.</p></li>
+          <li class="step reveal" data-aos="zoom-soft"><span>04</span><h3>Desenvolvimento</h3><p>Entregas incrementais, com acompanhamento a cada etapa.</p></li>
+          <li class="step reveal" data-aos="zoom-soft"><span>05</span><h3>Testes e validação</h3><p>Qualidade, segurança e performance checadas antes de ir ao ar.</p></li>
+          <li class="step reveal" data-aos="zoom-soft"><span>06</span><h3>Entrega e evolução</h3><p>Deploy seguro, monitoramento e melhorias contínuas.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section section--dark about" id="sobre">
+      <div class="container about__grid">
+        <div class="about__copy reveal" data-aos="left">
+          <span class="eyebrow">Sobre a Dev+</span>
+          <h2>Tecnologia sob medida para empresas que querem crescer.</h2>
+          <p>A Dev+ une estratégia, design e desenvolvimento para criar soluções digitais robustas, intuitivas e preparadas para escala.</p>
+          <p>Atuamos como parceiro estratégico para transformar processos, estruturar produtos digitais e acelerar resultados com engenharia sólida, experiência fluida e foco real em performance.</p>
+        </div>
+        <div class="about__pillars">
+          <div class="pillar reveal" data-aos="right"><h3>Parceria estratégica</h3><p>Do discovery à evolução contínua.</p></div>
+          <div class="pillar reveal" data-aos="right"><h3>Arquitetura moderna</h3><p>Produtos web preparados para operação crítica.</p></div>
+          <div class="pillar reveal" data-aos="right"><h3>Execução orientada a valor</h3><p>Decisão técnica alinhada aos objetivos do negócio.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ: faixa clara -->
+    <section class="section section--light" id="faq">
+      <div class="container faq">
+        <header class="section-head section-head--center reveal">
+          <span class="eyebrow eyebrow--dark">Perguntas frequentes</span>
+          <h2>Ficou alguma dúvida?</h2>
+        </header>
+        <div class="faq__list">
+          <details class="faq__item reveal">
+            <summary>Quanto tempo leva para desenvolver um projeto?</summary>
+            <div class="faq__answer"><p>Depende do escopo. Depois do diagnóstico, você recebe um cronograma com as entregas de cada etapa, para acompanhar a evolução do início ao fim.</p></div>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Vocês trabalham com empresas de qualquer porte?</summary>
+            <div class="faq__answer"><p>Sim. Atendemos desde negócios que estão estruturando o primeiro produto digital até operações que precisam escalar sistemas existentes.</p></div>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Conseguem integrar com os sistemas que já usamos?</summary>
+            <div class="faq__answer"><p>Sim. Integramos ERPs, CRMs, gateways de pagamento e serviços em nuvem via API, mantendo seus dados sincronizados.</p></div>
+          </details>
+          <details class="faq__item reveal">
+            <summary>O que acontece depois da entrega?</summary>
+            <div class="faq__answer"><p>Seguimos juntos com monitoramento, suporte e evolução contínua, para que a solução acompanhe o crescimento do seu negócio.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contato">
+      <div class="cta__beam" aria-hidden="true"></div>
+      <div class="container cta__inner reveal" data-aos="zoom">
+        <span class="eyebrow">Vamos construir</span>
+        <h2>Pronto para transformar sua ideia em uma solução digital?</h2>
+        <p>Vamos construir uma plataforma eficiente, segura e alinhada aos objetivos do seu negócio.</p>
+        <div class="hero__ctas hero__ctas--center">
+          <a href="mailto:contato@devmais.com?subject=Quero%20come%C3%A7ar%20um%20projeto" class="btn btn--primary">Falar com a Dev+ <span aria-hidden="true">→</span></a>
+          <a href="#solucoes" class="btn btn--ghost">Ver soluções</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#inicio" class="brand" aria-label="Dev+ início"><svg class="brand__logo" role="img" aria-label="Dev+"><use href="#logo"/></svg></a>
+        <p>SaaS, sistemas web, automações e soluções digitais sob medida para empresas que querem crescer com tecnologia.</p>
+      </div>
+      <div>
+        <h4>Links rápidos</h4>
+        <a href="#inicio">Início</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#processo">Processo</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <a href="mailto:contato@devmais.com">contato@devmais.com</a>
+        <a href="https://wa.me/558521809953?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dev%2B%20e%20quero%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">(85) 2180-9953</a>
+        <a href="https://devmais.com">devmais.com</a>
+        <span>Projetos SaaS, web e automação</span>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year">2026</span> Dev+. Todos os direitos reservados.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
