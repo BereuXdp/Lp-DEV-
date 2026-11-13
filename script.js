@@ -249,6 +249,125 @@ if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
   });
 }
 
+// ---------- Portfólio ----------
+// Para adicionar um projeto, copie um bloco abaixo e preencha:
+//   name: nome do projeto          category: tipo (Site, E-commerce, Sistema...)
+//   description: uma frase curta   url: endereço do site (ou "" se não for público)
+//   image: print da página em assets/portfolio/ (1440x900, a primeira dobra do site).
+//          Sem imagem, aparece uma prévia ilustrada na cor de "color".
+const projects = [
+  { name: "RestoBI", category: "BI para restaurantes", description: "Faturamento, ticket médio, metas e curva ABC em painéis claros, por unidade e em tempo real.", url: "https://restobi.com.br", image: "assets/portfolio/restobi.webp", color: "#4f8ff7" },
+  { name: "Hunter", category: "XML fiscal", description: "Coleta sozinho as NFC-e e NF-e de cada loja da rede e deixa o mês pronto para o contador.", url: "https://hunter.devmais.com", image: "assets/portfolio/hunter.webp", color: "#7fc4b4" },
+  { name: "TALIS", category: "IA no WhatsApp", description: "Agente de IA que atende e vende pelo WhatsApp 24 horas e chama a equipe quando precisa.", url: "https://talis.devmais.com", image: "assets/portfolio/talis.webp", color: "#d9c79e" },
+  { name: "Opiina", category: "NPS e feedback", description: "Captura o NPS, abre ocorrências e organiza o atendimento numa unidade ou na rede toda.", url: "https://opiina.com", image: "assets/portfolio/opiina.webp", color: "#6b8cff" },
+  { name: "Muito Mais", category: "Cashback", description: "Cashback direto no cupom do restaurante, com QR Code e sem cartão, para o cliente voltar.", url: "https://muitomais.app", image: "assets/portfolio/muitomais.webp", color: "#34d399" },
+  { name: "SeuQR", category: "QR Code dinâmico", description: "QR Codes dinâmicos: troque o destino sem reimprimir e acompanhe cada scan em tempo real.", url: "https://seuqr.com", image: "assets/portfolio/seuqr.webp", color: "#7aa7ff" },
+];
+
+const portfolioTrack = document.getElementById("portfolioTrack");
+const portfolioViewport = document.getElementById("portfolioViewport");
+
+const escapeHtml = (str) => str.replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[ch]));
+const domainOf = (url) => { try { return new URL(url).hostname.replace(/^www./, ""); } catch { return "em breve"; } };
+
+const projectCard = (p, clone) => {
+  const shot = p.image
+    ? `<img src="${p.image}" alt="Página do projeto ${escapeHtml(p.name)}" loading="lazy">`
+    : `<div class="shot-ph" style="--c:${p.color}" aria-hidden="true">
+         <div class="shot-ph__nav"><i></i><span></span><span></span><span></span><b></b></div>
+         <div class="shot-ph__hero"><span></span><span></span><span class="short"></span><b></b></div>
+         <div class="shot-ph__grid"><i></i><i></i><i></i></div>
+       </div>`;
+  const tag = p.url ? "a" : "div";
+  const attrs = p.url ? `href="${p.url}" target="_blank" rel="noopener"` : "";
+  return `<li class="project"${clone ? " aria-hidden=\"true\"" : ""}>
+    <${tag} class="project__link" ${attrs}${clone ? " tabindex=\"-1\"" : ""}>
+      <div class="project__frame">
+        <div class="project__bar"><i></i><i></i><i></i><span>${escapeHtml(domainOf(p.url))}</span></div>
+        <div class="project__shot">${shot}</div>
+      </div>
+      <div class="project__meta">
+        <span class="project__tag" style="--c:${p.color}">${escapeHtml(p.category)}</span>
+        <h3>${escapeHtml(p.name)}</h3>
+        <p>${escapeHtml(p.description)}</p>
+        ${p.url ? `<span class="project__cta">Visitar site <span aria-hidden="true">→</span></span>` : `<span class="project__cta project__cta--soon">Em breve</span>`}
+      </div>
+    </${tag}>
+  </li>`;
+};
+
+// Two copies side by side make the loop seamless: when the first copy has
+// scrolled fully out of view, jump back by its width and nobody notices.
+portfolioTrack.innerHTML = projects.map((p) => projectCard(p, false)).join("") + projects.map((p) => projectCard(p, true)).join("");
+
+let autoScroll = !reduceMotion;
+let pausedUntil = 0;
+let hovering = false;
+
+const SPEED = 0.45; // px per frame (~27px/s)
+const loopWidth = () => portfolioTrack.scrollWidth / 2;
+const pause = (ms = 2500) => { pausedUntil = performance.now() + ms; };
+
+// Browsers round scrollLeft, so sub-pixel steps would be lost: while auto-scrolling,
+// keep the exact position in a float. Whenever the user (or a button) is moving it,
+// just follow scrollLeft so their scroll is never fought.
+let pos = -1;
+const tickPortfolio = (now) => {
+  const half = loopWidth();
+  const sl = portfolioViewport.scrollLeft;
+  const box = portfolioViewport.getBoundingClientRect();
+  const onScreen = box.bottom > 0 && box.top < window.innerHeight;
+  const active = autoScroll && onScreen && !hovering && dragX === null && now > pausedUntil && !document.hidden;
+  if (active) {
+    if (pos < 0 || Math.abs(sl - pos) > 2) pos = sl;
+    pos += SPEED;
+  } else {
+    pos = sl;
+  }
+  if (pos >= half) pos -= half;
+  else if (pos < 1) pos += half;
+  if (Math.round(pos) !== sl) portfolioViewport.scrollLeft = pos;
+  requestAnimationFrame(tickPortfolio);
+};
+requestAnimationFrame(tickPortfolio);
+
+portfolioViewport.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") hovering = true; });
+portfolioViewport.addEventListener("pointerleave", () => { hovering = false; });
+portfolioViewport.addEventListener("focusin", () => { hovering = true; });
+portfolioViewport.addEventListener("focusout", () => { hovering = false; });
+["pointerdown", "wheel", "touchstart"].forEach((type) =>
+  portfolioViewport.addEventListener(type, () => pause(3000), { passive: true }));
+
+// Drag to scroll with the mouse
+let dragX = null;
+let dragStart = 0;
+let dragged = false;
+portfolioViewport.addEventListener("pointerdown", (e) => {
+  if (e.pointerType !== "mouse") return;
+  dragX = e.clientX; dragStart = portfolioViewport.scrollLeft; dragged = false;
+});
+window.addEventListener("pointermove", (e) => {
+  if (dragX === null) return;
+  const dx = e.clientX - dragX;
+  if (Math.abs(dx) > 5) { dragged = true; portfolioViewport.classList.add("is-dragging"); }
+  portfolioViewport.scrollLeft = dragStart - dx;
+});
+window.addEventListener("pointerup", () => { dragX = null; portfolioViewport.classList.remove("is-dragging"); });
+portfolioViewport.addEventListener("click", (e) => { if (dragged) { e.preventDefault(); dragged = false; } }, true);
+
+const step = (dir) => {
+  const card = portfolioTrack.querySelector(".project");
+  const gap = parseFloat(getComputedStyle(portfolioTrack).columnGap) || 0;
+  pause(4000);
+  portfolioViewport.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: reduceMotion ? "auto" : "smooth" });
+};
+document.getElementById("portfolioPrev").addEventListener("click", () => step(-1));
+document.getElementById("portfolioNext").addEventListener("click", () => step(1));
+portfolioViewport.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
+  if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); }
+});
+
 // FAQ: smooth open/close on <details>
 document.querySelectorAll(".faq__item").forEach((item) => {
   const summary = item.querySelector("summary");

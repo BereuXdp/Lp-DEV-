@@ -47,6 +47,7 @@
       </a>
       <nav class="nav__links" id="navLinks" aria-label="Principal">
         <a href="#solucoes">Soluções</a>
+        <a href="#portfolio">Projetos</a>
         <a href="#diferenciais">Diferenciais</a>
         <a href="#processo">Processo</a>
         <a href="#sobre">Sobre</a>
@@ -385,6 +386,26 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- PORTFÓLIO: vitrine em carrossel (projetos vêm de script.js) -->
+    <section class="section section--dark portfolio" id="portfolio">
+      <div class="container">
+        <header class="section-head portfolio__head reveal">
+          <div>
+            <span class="eyebrow">Projetos</span>
+            <h2>Projetos que já estão no ar.</h2>
+            <p>Sites, plataformas e sistemas que a Dev+ desenhou e desenvolveu. Passe o mouse para pausar e clique para visitar.</p>
+          </div>
+          <div class="portfolio__controls" aria-label="Controles do carrossel">
+            <button class="portfolio__btn" id="portfolioPrev" aria-label="Projeto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="portfolio__btn" id="portfolioNext" aria-label="Próximo projeto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </header>
+      </div>
+      <div class="portfolio__viewport" id="portfolioViewport" tabindex="0" aria-label="Vitrine de projetos">
+        <ul class="portfolio__track" id="portfolioTrack"></ul>
       </div>
     </section>
 
