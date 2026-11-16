@@ -1,0 +1,33 @@
+# Dev+
+
+> A Dev+ (DevMais) desenvolve plataformas SaaS, sistemas web, dashboards, integrações e automações sob medida para empresas que querem escalar com tecnologia.
+
+A Dev+ atua como parceira estratégica, do diagnóstico à evolução contínua do produto, unindo estratégia, design e desenvolvimento.
+
+## O que fazemos
+
+- Plataformas SaaS: assinaturas, cobrança recorrente, multi-tenant e onboarding
+- Dashboards e analytics: KPIs em tempo real, metas e dados de várias fontes
+- Integrações com APIs: ERPs, CRMs, gateways de pagamento e serviços em nuvem
+- Sites institucionais: presença digital para posicionar marca e converter
+- Sistemas internos: operações centralizadas e integradas ao processo da empresa
+- Automações empresariais: aprovações, atendimento e rotinas administrativas
+
+## Processo
+
+Diagnóstico, planejamento, design da solução, desenvolvimento, testes e validação, entrega e evolução.
+
+## Produtos desenvolvidos pela Dev+
+
+- [RestoBI](https://restobi.com.br): BI para restaurantes, com faturamento, ticket médio, metas e curva ABC por unidade e em tempo real
+- [Hunter](https://hunter.devmais.com): coleta automática de XMLs fiscais (NFC-e e NF-e) de cada loja da rede
+- [TALIS](https://talis.devmais.com): agente de IA que atende e vende pelo WhatsApp 24 horas
+- [Opiina](https://opiina.com): captura de NPS, ocorrências e organização do atendimento
+- [Muito Mais](https://muitomais.app): cashback direto no cupom do restaurante, sem cartão
+- [SeuQR](https://seuqr.com): QR Codes dinâmicos com troca de destino e métricas de scan
+
+## Contato
+
+- Site: https://devmais.com
+- E-mail: contato@devmais.com
+- WhatsApp: (85) 2180-9953
