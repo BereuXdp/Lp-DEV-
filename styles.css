@@ -526,64 +526,40 @@ p { margin: 0; }
 .section--light .section-head p { color: var(--ink-2); }
 
 /* =========================================================
-   Bento — Huly MetaBrain
+   Diferenciais — lista editorial, sem fotos
    ========================================================= */
-.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.bento__card {
-  position: relative; overflow: hidden; isolation: isolate;
-  padding: 28px; border-radius: var(--r-card);
-  background: linear-gradient(180deg, var(--card-2), var(--card));
-  border: 1px solid var(--edge);
-  display: flex; flex-direction: column; gap: 10px; min-height: 260px;
-  transition: border-color .3s, transform .4s var(--ease-out);
+.diffs { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+.diffs__head { margin-bottom: 0; position: sticky; top: 120px; }
+.diffs__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--edge); }
+.diff {
+  position: relative; display: flex; flex-direction: column; gap: 16px;
+  padding: 28px 24px 32px 0; border-bottom: 1px solid var(--edge);
 }
-.bento__card:hover { border-color: var(--edge-strong); transform: translateY(-4px); }
-.bento__card h3 { font-size: 22px; line-height: 1.15; }
-.bento__card p { font-size: 15px; color: var(--text-2); max-width: 36ch; }
-.bento__card--wide { grid-column: span 2; flex-direction: row; align-items: center; gap: 32px; }
-.bento__card--wide .bento__text { flex: 1; }
-.bento__card--stat { align-items: flex-start; }
-
-/* Glows bleeding from a corner */
-.bento__card::before {
-  content: ""; position: absolute; z-index: -1; width: 340px; height: 340px; border-radius: 50%;
-  right: -140px; bottom: -160px; opacity: 0; filter: blur(50px); transition: opacity .5s;
+.diff:nth-child(even) { padding-left: 24px; padding-right: 0; border-left: 1px solid var(--edge); }
+.diff::after {
+  content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 0;
+  background: var(--green-grad); transition: width .6s var(--ease-out);
 }
-.glow-green::before { background: rgba(34,197,94,.35); opacity: .8; }
-.glow-amber::before { background: rgba(255,154,92,.28); opacity: .8; }
-.glow-blue::before  { background: rgba(91,141,239,.28); opacity: .8; }
-.bento__card:hover::before { opacity: 1; }
-
-/* Product screenshots inside the bento cards */
-.bento__shot {
-  position: relative; margin: auto 0 0; border-radius: 14px; overflow: hidden;
-  border: 1px solid var(--edge-strong); background: #0b0f0d; aspect-ratio: 16 / 10;
-  box-shadow: 0 24px 40px -24px rgba(0,0,0,.9);
+.diff:nth-child(even)::after { left: 24px; }
+.diff:hover::after { width: 48px; }
+.diff__icon {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.22); color: #4ade80;
+  transition: background .3s, border-color .3s;
 }
-.bento__card--wide .bento__shot { flex: 1.25; margin: 0; aspect-ratio: auto; height: 190px; }
-.bento__card--stat .bento__shot { margin: 0 0 6px; }
-.bento__shot img {
-  display: block; width: 100%; height: 100%; object-fit: cover; object-position: center;
-  transition: transform 1s var(--ease-out);
-  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent);
-  mask-image: linear-gradient(180deg, #000 70%, transparent);
-}
-.bento__card:hover .bento__shot img { transform: scale(1.06); }
-.bento__shot figcaption {
-  position: absolute; left: 10px; bottom: 10px; padding: 4px 10px; border-radius: 99px;
-  font-size: 11px; font-weight: 600; color: #fff;
-  background: rgba(10,13,12,.7); border: 1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-}
+.diff:hover .diff__icon { background: rgba(34,197,94,.14); border-color: rgba(34,197,94,.4); }
+.diff__icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.diff h3 { font-size: 20px; line-height: 1.2; }
+.diff p { margin-top: 8px; font-size: 15px; color: var(--text-2); max-width: 34ch; }
 
 @media (max-width: 960px) {
-  .bento { grid-template-columns: 1fr 1fr; }
-  .bento__card--wide { grid-column: span 2; }
+  .diffs { grid-template-columns: 1fr; }
+  .diffs__head { position: static; }
 }
-@media (max-width: 640px) {
-  .bento { grid-template-columns: 1fr; }
-  .bento__card--wide { grid-column: auto; flex-direction: column; align-items: stretch; gap: 20px; }
-  .bento__card { min-height: 0; padding: 24px; }
+@media (max-width: 560px) {
+  .diffs__list { grid-template-columns: 1fr; }
+  .diff, .diff:nth-child(even) { padding: 24px 0; border-left: 0; }
+  .diff:nth-child(even)::after { left: 0; }
 }
 
 /* =========================================================
@@ -921,10 +897,6 @@ p { margin: 0; }
   .project { width: 78vw; }
 }
 
-/* Mobile: wide bento cards stack, so the product shot gets its normal 16:10 frame */
-@media (max-width: 640px) {
-  .bento__card--wide .bento__shot { flex: none; height: auto; aspect-ratio: 16 / 10; }
-}
 
 
 /* =========================================================
