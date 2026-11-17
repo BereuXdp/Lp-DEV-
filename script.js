@@ -302,7 +302,6 @@ portfolioTrack.innerHTML = projects.map((p) => projectCard(p, false)).join("") +
 
 let autoScroll = !reduceMotion;
 let pausedUntil = 0;
-let hovering = false;
 
 const SPEED = 0.45; // px per frame (~27px/s)
 const loopWidth = () => portfolioTrack.scrollWidth / 2;
@@ -317,7 +316,7 @@ const tickPortfolio = (now) => {
   const sl = portfolioViewport.scrollLeft;
   const box = portfolioViewport.getBoundingClientRect();
   const onScreen = box.bottom > 0 && box.top < window.innerHeight;
-  const active = autoScroll && onScreen && !hovering && dragX === null && now > pausedUntil && !document.hidden;
+  const active = autoScroll && onScreen && dragX === null && now > pausedUntil && !document.hidden;
   if (active) {
     if (pos < 0 || Math.abs(sl - pos) > 2) pos = sl;
     pos += SPEED;
@@ -331,10 +330,6 @@ const tickPortfolio = (now) => {
 };
 requestAnimationFrame(tickPortfolio);
 
-portfolioViewport.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") hovering = true; });
-portfolioViewport.addEventListener("pointerleave", () => { hovering = false; });
-portfolioViewport.addEventListener("focusin", () => { hovering = true; });
-portfolioViewport.addEventListener("focusout", () => { hovering = false; });
 ["pointerdown", "wheel", "touchstart"].forEach((type) =>
   portfolioViewport.addEventListener(type, () => pause(3000), { passive: true }));
 
@@ -354,53 +349,6 @@ window.addEventListener("pointermove", (e) => {
 });
 window.addEventListener("pointerup", () => { dragX = null; portfolioViewport.classList.remove("is-dragging"); });
 portfolioViewport.addEventListener("click", (e) => { if (dragged) { e.preventDefault(); dragged = false; } }, true);
-
-const step = (dir) => {
-  const card = portfolioTrack.querySelector(".project");
-  const gap = parseFloat(getComputedStyle(portfolioTrack).columnGap) || 0;
-  pause(4000);
-  portfolioViewport.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: reduceMotion ? "auto" : "smooth" });
-};
-document.getElementById("portfolioPrev").addEventListener("click", () => step(-1));
-document.getElementById("portfolioNext").addEventListener("click", () => step(1));
-portfolioViewport.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
-  if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); }
-});
-
-// ---------- Processo: timeline lights up as you scroll ----------
-const timeline = document.getElementById("timeline");
-const tlSteps = [...timeline.querySelectorAll(".tl-step")];
-const processCurrent = document.getElementById("processCurrent");
-const processLabel = document.getElementById("processLabel");
-const processBar = document.getElementById("processBar");
-let tlTicking = false;
-
-const updateTimeline = () => {
-  tlTicking = false;
-  // The "reading line" sits a bit above the middle of the screen
-  const line = window.innerHeight * 0.45;
-  const box = timeline.getBoundingClientRect();
-  const p = clamp((line - box.top - 28) / (box.height - 56));
-  timeline.style.setProperty("--p", p.toFixed(4));
-  processBar.parentElement.style.setProperty("--p", p.toFixed(4));
-
-  let current = 0;
-  tlSteps.forEach((step, i) => {
-    const node = step.querySelector(".tl-step__node").getBoundingClientRect();
-    const reached = node.top + node.height / 2 <= line;
-    step.classList.toggle("is-done", reached);
-    if (reached) current = i;
-  });
-  tlSteps.forEach((step, i) => step.classList.toggle("is-current", i === current));
-  processCurrent.textContent = tlSteps[current].dataset.step;
-  processLabel.textContent = tlSteps[current].querySelector("h3").textContent;
-};
-updateTimeline();
-window.addEventListener("scroll", () => {
-  if (!tlTicking) { tlTicking = true; requestAnimationFrame(updateTimeline); }
-}, { passive: true });
-window.addEventListener("resize", updateTimeline);
 
 // FAQ: smooth open/close on <details>
 document.querySelectorAll(".faq__item").forEach((item) => {
