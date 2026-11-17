@@ -350,6 +350,40 @@ window.addEventListener("pointermove", (e) => {
 window.addEventListener("pointerup", () => { dragX = null; portfolioViewport.classList.remove("is-dragging"); });
 portfolioViewport.addEventListener("click", (e) => { if (dragged) { e.preventDefault(); dragged = false; } }, true);
 
+// ---------- Processo: timeline lights up as you scroll ----------
+const timeline = document.getElementById("timeline");
+const tlSteps = [...timeline.querySelectorAll(".tl-step")];
+const processCurrent = document.getElementById("processCurrent");
+const processLabel = document.getElementById("processLabel");
+const processBar = document.getElementById("processBar");
+let tlTicking = false;
+
+const updateTimeline = () => {
+  tlTicking = false;
+  // The "reading line" sits a bit above the middle of the screen
+  const line = window.innerHeight * 0.45;
+  const box = timeline.getBoundingClientRect();
+  const p = clamp((line - box.top - 28) / (box.height - 56));
+  timeline.style.setProperty("--p", p.toFixed(4));
+  processBar.parentElement.style.setProperty("--p", p.toFixed(4));
+
+  let current = 0;
+  tlSteps.forEach((step, i) => {
+    const node = step.querySelector(".tl-step__node").getBoundingClientRect();
+    const reached = node.top + node.height / 2 <= line;
+    step.classList.toggle("is-done", reached);
+    if (reached) current = i;
+  });
+  tlSteps.forEach((step, i) => step.classList.toggle("is-current", i === current));
+  processCurrent.textContent = tlSteps[current].dataset.step;
+  processLabel.textContent = tlSteps[current].querySelector("h3").textContent;
+};
+updateTimeline();
+window.addEventListener("scroll", () => {
+  if (!tlTicking) { tlTicking = true; requestAnimationFrame(updateTimeline); }
+}, { passive: true });
+window.addEventListener("resize", updateTimeline);
+
 // FAQ: smooth open/close on <details>
 document.querySelectorAll(".faq__item").forEach((item) => {
   const summary = item.querySelector("summary");
