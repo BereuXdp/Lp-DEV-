@@ -29,5 +29,5 @@ Diagnóstico, planejamento, design da solução, desenvolvimento, testes e valid
 ## Contato
 
 - Site: https://devmais.com
-- E-mail: contato@devmais.com
+- E-mail: atendimento@devmais.com
 - WhatsApp: (85) 2180-9953
