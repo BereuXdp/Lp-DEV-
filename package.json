@@ -1,0 +1,9 @@
+{
+  "name": "devmais-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page Dev+ e central de atendimento",
+  "scripts": {
+    "dev": "node atendimento/dev-server.js ."
+  }
+}

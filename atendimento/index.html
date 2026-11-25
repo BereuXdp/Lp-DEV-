@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dev+ | Central de Atendimento</title>
+  <meta name="description" content="Central de atendimento Dev+: relate problemas nos seus sistemas, envie reclamações ou cadastre-se para conhecer nossas soluções. WhatsApp, e-mail e Telegram.">
+  <meta name="theme-color" content="#07090a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Logo Dev+ (mesmo símbolo do devmais.com) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="devmais-plus" x1="0" y1="470" x2="0" y2="608" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#0ae087"/>
+        <stop offset=".55" stop-color="#14935c"/>
+        <stop offset="1" stop-color="#112a22"/>
+      </linearGradient>
+      <symbol id="logo-plus" viewBox="718 466 159 146">
+        <g fill="url(#devmais-plus)">
+          <path d="M786 470H821C819 500 812 525 795 537C780 550 760 556 722 552L729 518C750 525 770 525 778 518C787 510 788 490 786 470Z"/>
+          <path d="M809 608H774C776 578 783 553 800 541C815 528 835 522 873 526L866 560C845 553 825 553 817 560C808 568 807 588 809 608Z"/>
+        </g>
+      </symbol>
+      <symbol id="logo" viewBox="203 453 674 173">
+        <g fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round">
+          <path d="M210 460H275A79.5 79.5 0 0 1 275 619H210Z"/>
+          <path d="M376 460H496V495H415V521H487V558H415V583H496V619H376Z"/>
+          <path d="M519 460H560L606 562L652 460H695L627 619H588Z"/>
+        </g>
+        <use href="#logo-plus" x="718" y="466" width="159" height="146"/>
+      </symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.1c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.24.58.82 2 .89 2.15.07.14.12.31.02.5-.1.2-.14.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.3-.13.59.17.29.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.3 1.42.29.14.46.12.63-.07.17-.2.72-.84.92-1.13.19-.29.38-.24.65-.14.27.1 1.7.8 1.99.95.29.14.48.22.55.34.07.12.07.7-.17 1.38Z"/></symbol>
+      <symbol id="i-tg" viewBox="0 0 24 24"><path d="M21.6 4.2 2.9 11.4c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.6.2 1.8-.8l3.3-15.4c.3-1.3-.5-1.9-1.4-1.5ZM9.3 14l9.3-5.9c.4-.3.8-.1.5.2l-7.9 7.1-.3 3.3L9.3 14Z"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="nav__pill">
+      <a href="../" class="nav__brand" aria-label="Voltar para devmais.com">
+        <svg role="img" aria-label="Dev+"><use href="#logo-plus"/></svg>
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#canais">Canais</a>
+        <a href="#formulario">Abrir chamado</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+      <a href="#formulario" class="nav__cta">Relatar problema</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="hero__beam"></span>
+        <span class="hero__glow"></span>
+        <span class="hero__grid"></span>
+      </div>
+      <div class="container hero__inner">
+        <span class="eyebrow">Central de atendimento Dev+</span>
+        <h1 class="hero__title">Algo não está funcionando? <span class="grad">A gente resolve.</span></h1>
+        <p class="hero__sub">Relate falhas, instabilidades ou reclamações sobre os nossos sistemas, ou cadastre-se para conhecer as soluções da Dev+. Cada mensagem vira um chamado com protocolo e retorno da nossa equipe.</p>
+        <div class="hero__ctas">
+          <a href="#formulario" class="btn btn--primary">Abrir chamado <svg class="ico"><use href="#i-arrow"/></svg></a>
+          <a href="#canais" class="btn btn--ghost">Falar agora</a>
+        </div>
+        <ul class="hero__stats" aria-label="Nosso compromisso de atendimento">
+          <li><b>Até 2h</b><span>retorno em casos críticos</span></li>
+          <li><b>24/7</b><span>monitoramento dos sistemas</span></li>
+          <li><b>3 canais</b><span>WhatsApp, e-mail e Telegram</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CANAIS -->
+    <section class="section" id="canais">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Fale com a gente</span>
+          <h2>Escolha o canal que preferir.</h2>
+          <p>Para problemas urgentes, o WhatsApp é o caminho mais rápido. Para registrar tudo com detalhes, use o formulário logo abaixo.</p>
+        </div>
+
+        <div class="channels">
+          <a class="channel channel--wa" id="lnkWhatsapp" href="#" target="_blank" rel="noopener">
+            <span class="channel__icon"><svg><use href="#i-wa"/></svg></span>
+            <span class="channel__tag">Mais rápido</span>
+            <h3>WhatsApp</h3>
+            <p>Atendimento direto com o time de suporte. Ideal para sistema fora do ar ou erro que trava sua operação.</p>
+            <span class="channel__meta" data-fill="whatsappLabel">(85) 2180-9953</span>
+            <span class="channel__go">Iniciar conversa <svg class="ico"><use href="#i-arrow"/></svg></span>
+          </a>
+
+          <a class="channel channel--mail" id="lnkEmail" href="#">
+            <span class="channel__icon"><svg><use href="#i-mail"/></svg></span>
+            <span class="channel__tag">Com anexos</span>
+            <h3>E-mail</h3>
+            <p>Bom para enviar prints, relatórios e descrições longas. Respondemos em até 1 dia útil.</p>
+            <span class="channel__meta" data-fill="email">atendimento@devmais.com</span>
+            <span class="channel__go">Enviar e-mail <svg class="ico"><use href="#i-arrow"/></svg></span>
+          </a>
+
+          <a class="channel channel--tg" id="lnkTelegram" href="#" target="_blank" rel="noopener">
+            <span class="channel__icon"><svg><use href="#i-tg"/></svg></span>
+            <span class="channel__tag">Sem misturar</span>
+            <h3>Telegram</h3>
+            <p>Prefere manter o trabalho fora do WhatsApp? Fale com a gente pelo Telegram, com o mesmo time.</p>
+            <span class="channel__meta" data-fill="telegramLabel">@devmais</span>
+            <span class="channel__go">Abrir Telegram <svg class="ico"><use href="#i-arrow"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section class="section section--form" id="formulario">
+      <div class="container form-layout">
+
+        <aside class="form-aside">
+          <span class="eyebrow">Abrir chamado</span>
+          <h2>Conte o que aconteceu.</h2>
+          <p>Quanto mais detalhes, mais rápido a gente encontra a causa. Você recebe um número de protocolo para acompanhar.</p>
+
+          <ol class="steps">
+            <li><b>1. Você envia</b><span>Preenche o formulário com o sistema e o problema.</span></li>
+            <li><b>2. A gente analisa</b><span>O chamado cai direto para o time responsável pelo sistema.</span></li>
+            <li><b>3. Você recebe o retorno</b><span>Pelo canal que escolher, com o status da solução.</span></li>
+          </ol>
+
+          <div class="sla">
+            <p class="sla__title">Tempo de primeira resposta</p>
+            <ul>
+              <li><i class="dot dot--crit"></i>Crítica, sistema parado <b>até 2h</b></li>
+              <li><i class="dot dot--high"></i>Alta <b>até 4h</b></li>
+              <li><i class="dot dot--med"></i>Média <b>até 1 dia útil</b></li>
+              <li><i class="dot dot--low"></i>Baixa e cadastros <b>até 2 dias úteis</b></li>
+            </ul>
+          </div>
+        </aside>
+
+        <div class="form-card">
+          <form id="ticketForm" novalidate>
+
+            <fieldset class="seg" aria-label="Você é cliente?">
+              <legend class="label">Você já é cliente Dev+?</legend>
+              <div class="seg__opts">
+                <label><input type="radio" name="perfil" value="cliente" checked><span>Sim, sou cliente</span></label>
+                <label><input type="radio" name="perfil" value="interessado"><span>Ainda não, quero conhecer</span></label>
+              </div>
+            </fieldset>
+
+            <div class="grid-2">
+              <div class="field">
+                <label class="label" for="nome">Nome completo *</label>
+                <input id="nome" name="nome" type="text" autocomplete="name" required placeholder="Como podemos te chamar?">
+                <small class="err">Informe seu nome.</small>
+              </div>
+              <div class="field">
+                <label class="label" for="empresa">Empresa</label>
+                <input id="empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa ou restaurante">
+              </div>
+              <div class="field">
+                <label class="label" for="email">E-mail *</label>
+                <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="voce@empresa.com">
+                <small class="err">Informe um e-mail válido.</small>
+              </div>
+              <div class="field">
+                <label class="label" for="telefone">WhatsApp *</label>
+                <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="(85) 90000-0000">
+                <small class="err">Informe um telefone com DDD.</small>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="field">
+                <label class="label" for="tipo">Tipo de solicitação *</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="">Selecione</option>
+                  <option>Sistema fora do ar</option>
+                  <option>Erro ou falha no sistema</option>
+                  <option>Lentidão ou instabilidade</option>
+                  <option>Reclamação</option>
+                  <option>Dúvida sobre uso</option>
+                  <option>Sugestão de melhoria</option>
+                  <option>Quero conhecer as soluções</option>
+                </select>
+                <small class="err">Escolha o tipo.</small>
+              </div>
+              <div class="field">
+                <label class="label" for="sistema">Qual sistema? *</label>
+                <select id="sistema" name="sistema" required>
+                  <option value="">Selecione</option>
+                  <option>Site institucional</option>
+                  <option>Sistema interno / painel</option>
+                  <option>Plataforma SaaS</option>
+                  <option>Dashboard e relatórios</option>
+                  <option>Integração com API / ERP</option>
+                  <option>Automação</option>
+                  <option>Cardápio / pedidos (restaurante)</option>
+                  <option>Outro / não sei</option>
+                </select>
+                <small class="err">Escolha o sistema.</small>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="descricao">Descreva o problema *</label>
+              <textarea id="descricao" name="descricao" rows="5" required maxlength="2000" placeholder="O que aconteceu, quando começou, em qual tela, e se aparece alguma mensagem de erro."></textarea>
+              <div class="row-between"><small class="err">Conte um pouco mais (mínimo 10 caracteres).</small><small class="count" id="count">0/2000</small></div>
+            </div>
+
+            <!-- Medidor de urgência -->
+            <div class="meter is-empty" id="meter" aria-live="polite">
+              <div class="meter__head">
+                <span class="meter__title">Medidor de urgência</span>
+                <span class="meter__level" id="meterLevel">Aguardando descrição</span>
+              </div>
+              <div class="meter__track" aria-hidden="true">
+                <span class="meter__fill" id="meterFill"></span>
+                <i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i>
+              </div>
+              <div class="meter__scale" aria-hidden="true"><span>Baixa</span><span>Média</span><span>Alta</span><span>Crítica</span></div>
+              <p class="meter__text" id="meterText">Escreva o que aconteceu que a gente sugere a urgência certa para o seu caso.</p>
+              <ul class="meter__reasons" id="meterReasons"></ul>
+            </div>
+
+            <!-- Seleção manual oculta: a urgência é definida só pelo medidor -->
+            <fieldset class="urg" id="urgBlock" hidden>
+              <legend class="label">Urgência * <span class="auto-tag" id="autoTag">ajustada pela descrição</span></legend>
+              <div class="urg__opts">
+                <label class="urg--low"><input type="radio" name="urgencia" value="Baixa"><span><b>Baixa</b><small>Dúvida, sugestão ou ajuste</small></span></label>
+                <label class="urg--med"><input type="radio" name="urgencia" value="Média" checked><span><b>Média</b><small>Funciona, mas com falha pontual</small></span></label>
+                <label class="urg--high"><input type="radio" name="urgencia" value="Alta"><span><b>Alta</b><small>Função importante com erro</small></span></label>
+                <label class="urg--crit"><input type="radio" name="urgencia" value="Crítica"><span><b>Crítica</b><small>Tudo parado agora</small></span></label>
+              </div>
+
+              <div class="urg-help" id="urgHelp"></div>
+
+              <div class="urg-warn" id="urgWarn" hidden>
+                <p id="urgWarnText"></p>
+                <button type="button" class="urg-warn__btn" id="useSuggestion">Usar a sugestão</button>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <span class="label">Como prefere receber o retorno?</span>
+              <div class="chips">
+                <label><input type="radio" name="retorno" value="WhatsApp" checked><span>WhatsApp</span></label>
+                <label><input type="radio" name="retorno" value="E-mail"><span>E-mail</span></label>
+                <label><input type="radio" name="retorno" value="Telegram"><span>Telegram</span></label>
+              </div>
+            </div>
+
+            <label class="check" id="lgpdWrap">
+              <input type="checkbox" id="lgpd" name="lgpd" required>
+              <span>Autorizo a Dev+ a usar estes dados para responder meu chamado, conforme a LGPD.</span>
+            </label>
+
+            <button type="submit" class="btn btn--primary btn--block" id="submitBtn">
+              Enviar chamado <svg class="ico"><use href="#i-arrow"/></svg>
+            </button>
+            <p class="form-note">Ao enviar, abrimos uma conversa no WhatsApp com o resumo pronto, para você só confirmar.</p>
+          </form>
+
+          <!-- Sucesso -->
+          <div class="success" id="success" hidden>
+            <div class="success__badge"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Chamado registrado!</h3>
+            <p>Seu protocolo é</p>
+            <p class="success__proto" id="protocolo">DEV-000000</p>
+            <p class="success__txt">Guarde esse número. Nossa equipe vai te responder pelo canal escolhido dentro do prazo da urgência informada.</p>
+            <div class="success__actions">
+              <a class="btn btn--primary" id="successWa" href="#" target="_blank" rel="noopener">Abrir WhatsApp de novo</a>
+              <button class="btn btn--ghost" type="button" id="newTicket">Abrir outro chamado</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container faq">
+        <div class="section__head">
+          <span class="eyebrow">Dúvidas frequentes</span>
+          <h2>Antes de abrir um chamado.</h2>
+        </div>
+        <div class="faq__list">
+          <details>
+            <summary>Meu sistema saiu do ar. O que faço primeiro?</summary>
+            <p>Chame no WhatsApp marcando urgência crítica, ou abra o chamado com urgência “Crítica”. Esse tipo de caso entra na frente da fila e tem retorno em até 2 horas.</p>
+          </details>
+          <details>
+            <summary>Como acompanho meu chamado?</summary>
+            <p>Use o número de protocolo (formato DEV-XXXXXX) em qualquer canal. Com ele, o time encontra seu histórico na hora.</p>
+          </details>
+          <details>
+            <summary>Ainda não sou cliente. Posso usar este formulário?</summary>
+            <p>Pode. Marque “Ainda não, quero conhecer” e o tipo “Quero conhecer as soluções”. Um especialista entra em contato para entender o que sua empresa precisa.</p>
+          </details>
+          <details>
+            <summary>O que devo incluir na descrição?</summary>
+            <p>Em qual tela ou função aconteceu, horário aproximado, mensagem de erro (se houver) e se o problema atinge todos os usuários ou só alguns. Prints ajudam muito: mande por e-mail citando o protocolo.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <svg class="footer__logo" role="img" aria-label="Dev+"><use href="#logo"/></svg>
+        <p>SaaS, sistemas web, automações e soluções digitais sob medida para empresas que querem crescer com tecnologia.</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__title">Atendimento</p>
+        <a data-link="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp <span data-fill="whatsappLabel">(85) 2180-9953</span></a>
+        <a data-link="email" href="#"><span data-fill="email">atendimento@devmais.com</span></a>
+        <a data-link="telegram" href="#" target="_blank" rel="noopener">Telegram <span data-fill="telegramLabel">@devmais</span></a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__title">Dev+</p>
+        <a href="https://devmais.com">devmais.com</a>
+        <a href="../#solucoes">Soluções</a>
+        <a href="../#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">© <span id="ano">2026</span> Dev+. Todos os direitos reservados.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
