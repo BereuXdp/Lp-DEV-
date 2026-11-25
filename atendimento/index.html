@@ -231,27 +231,12 @@
                 <i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i>
               </div>
               <div class="meter__scale" aria-hidden="true"><span>Baixa</span><span>Média</span><span>Alta</span><span>Crítica</span></div>
-              <p class="meter__text" id="meterText">Escreva o que aconteceu que a gente sugere a urgência certa para o seu caso.</p>
+              <p class="meter__text" id="meterText">Escreva o que aconteceu que a gente mede a urgência do seu caso.</p>
               <ul class="meter__reasons" id="meterReasons"></ul>
             </div>
 
-            <!-- Seleção manual oculta: a urgência é definida só pelo medidor -->
-            <fieldset class="urg" id="urgBlock" hidden>
-              <legend class="label">Urgência * <span class="auto-tag" id="autoTag">ajustada pela descrição</span></legend>
-              <div class="urg__opts">
-                <label class="urg--low"><input type="radio" name="urgencia" value="Baixa"><span><b>Baixa</b><small>Dúvida, sugestão ou ajuste</small></span></label>
-                <label class="urg--med"><input type="radio" name="urgencia" value="Média" checked><span><b>Média</b><small>Funciona, mas com falha pontual</small></span></label>
-                <label class="urg--high"><input type="radio" name="urgencia" value="Alta"><span><b>Alta</b><small>Função importante com erro</small></span></label>
-                <label class="urg--crit"><input type="radio" name="urgencia" value="Crítica"><span><b>Crítica</b><small>Tudo parado agora</small></span></label>
-              </div>
-
-              <div class="urg-help" id="urgHelp"></div>
-
-              <div class="urg-warn" id="urgWarn" hidden>
-                <p id="urgWarnText"></p>
-                <button type="button" class="urg-warn__btn" id="useSuggestion">Usar a sugestão</button>
-              </div>
-            </fieldset>
+            <!-- A urgência do chamado é a que o medidor calcula -->
+            <input type="hidden" name="urgencia" id="urgencia" value="Média">
 
             <div class="field">
               <span class="label">Como prefere receber o retorno?</span>
@@ -279,7 +264,7 @@
             <h3>Chamado registrado!</h3>
             <p>Seu protocolo é</p>
             <p class="success__proto" id="protocolo">DEV-000000</p>
-            <p class="success__txt">Guarde esse número. Nossa equipe vai te responder pelo canal escolhido dentro do prazo da urgência informada.</p>
+            <p class="success__txt">Guarde esse número. Nossa equipe vai te responder pelo canal escolhido dentro do prazo da urgência do chamado.</p>
             <div class="success__actions">
               <a class="btn btn--primary" id="successWa" href="#" target="_blank" rel="noopener">Abrir WhatsApp de novo</a>
               <button class="btn btn--ghost" type="button" id="newTicket">Abrir outro chamado</button>
@@ -300,7 +285,7 @@
         <div class="faq__list">
           <details>
             <summary>Meu sistema saiu do ar. O que faço primeiro?</summary>
-            <p>Chame no WhatsApp marcando urgência crítica, ou abra o chamado com urgência “Crítica”. Esse tipo de caso entra na frente da fila e tem retorno em até 2 horas.</p>
+            <p>Chame no WhatsApp ou abra o chamado contando que o sistema está parado: o medidor classifica como urgência “Crítica”. Esse tipo de caso entra na frente da fila e tem retorno em até 2 horas.</p>
           </details>
           <details>
             <summary>Como acompanho meu chamado?</summary>

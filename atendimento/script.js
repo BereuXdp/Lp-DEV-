@@ -67,31 +67,14 @@ $$('input[name="perfil"]').forEach((r) =>
 );
 
 /* =========================================================
-   Urgência: explicação de cada nível + medidor pela descrição
+   Urgência: o medidor lê a descrição e define a urgência
    ========================================================= */
 const LEVELS = ["Baixa", "Média", "Alta", "Crítica"];
-const LEVEL_COLORS = ["var(--green-400)", "var(--yellow)", "var(--amber)", "var(--red)"];
-const LEVEL_HELP = [
-  {
-    txt: "Use para <b>dúvidas, sugestões e ajustes</b> que não atrapalham o trabalho do dia a dia.",
-    ex: ["Como exporto um relatório?", "Trocar uma foto ou texto do site", "Ideia de melhoria para uma tela"],
-    sla: "Primeira resposta em até 2 dias úteis.",
-  },
-  {
-    txt: "O sistema <b>funciona</b>, mas algo incomoda ou falha de vez em quando.",
-    ex: ["Tela demorando para carregar", "Relatório com um valor estranho", "Erro que aparece só às vezes"],
-    sla: "Primeira resposta em até 1 dia útil.",
-  },
-  {
-    txt: "Uma <b>função importante não funciona</b>, mas ainda dá para continuar trabalhando de outro jeito.",
-    ex: ["Impressão de comandas falhando", "Integração atrasando pedidos", "Alguns usuários sem acesso"],
-    sla: "Primeira resposta em até 4 horas.",
-  },
-  {
-    txt: "Só quando o sistema está <b>parado para todos</b> ou você está <b>perdendo vendas agora</b>.",
-    ex: ["Site ou sistema fora do ar", "Ninguém consegue fazer pedido ou pagar", "Suspeita de invasão ou perda de dados"],
-    sla: "Primeira resposta em até 2 horas. Esse nível aciona o plantão, então marcar só quando for o caso ajuda a gente a atender todo mundo mais rápido.",
-  },
+const LEVEL_SLA = [
+  "Primeira resposta em até 2 dias úteis.",
+  "Primeira resposta em até 1 dia útil.",
+  "Primeira resposta em até 4 horas.",
+  "Primeira resposta em até 2 horas.",
 ];
 
 // Ponto de partida pelo tipo de solicitação escolhido
@@ -151,88 +134,39 @@ function scoreDescription(text, tipo) {
 }
 
 const meter = $("#meter");
-const urgBlock = $("#urgBlock");
-const urgHelp = $("#urgHelp");
-const urgWarn = $("#urgWarn");
-const urgRadios = $$('input[name="urgencia"]');
-let urgTouched = false;   // o cliente escolheu a urgência na mão?
-let suggestion = null;    // última sugestão do medidor (0-3)
-
-const currentLevel = () => LEVELS.indexOf(urgRadios.find((r) => r.checked)?.value);
-
-function setLevel(i) {
-  urgRadios[i].checked = true;
-  renderHelp();
-}
-
-function renderHelp() {
-  const i = currentLevel();
-  const h = LEVEL_HELP[i];
-  urgHelp.style.setProperty("--c", LEVEL_COLORS[i]);
-  urgHelp.innerHTML = `<p><b>${LEVELS[i]}:</b> ${h.txt}</p><ul>${h.ex.map((e) => `<li>${e}</li>`).join("")}</ul><span class="urg-help__sla">${h.sla}</span>`;
-  renderWarning();
-}
-
-function renderWarning() {
-  const sel = currentLevel();
-  const show = urgTouched && suggestion !== null && sel !== suggestion &&
-    (Math.abs(sel - suggestion) >= 2 || (sel === 3 && suggestion < 3));
-  urgWarn.hidden = !show;
-  if (!show) return;
-  $("#urgWarnText").innerHTML = sel > suggestion
-    ? `Você marcou <b>${LEVELS[sel]}</b>, mas pela descrição isso parece <b>${LEVELS[suggestion]}</b>. Se o sistema não está parado, uma urgência menor deixa o plantão livre para quem está sem conseguir trabalhar.`
-    : `Você marcou <b>${LEVELS[sel]}</b>, mas pela descrição isso parece <b>${LEVELS[suggestion]}</b>. Se está atrapalhando seu trabalho, aumente a urgência para a gente priorizar.`;
-  $("#useSuggestion").textContent = `Usar ${LEVELS[suggestion]}`;
-}
+const urgInput = $("#urgencia");
+let measured = false;   // o medidor já calculou algo?
 
 function analyze() {
   const text = desc.value.trim();
   const tipo = $("#tipo").value;
   if (text.length < 10 && !tipo) {
-    suggestion = null;
+    measured = false;
+    urgInput.value = "Média";
     meter.classList.add("is-empty");
     meter.removeAttribute("data-level");
     $("#meterFill").style.width = "0";
     $("#meterLevel").textContent = "Aguardando descrição";
-    $("#meterText").textContent = "Escreva o que aconteceu que a gente sugere a urgência certa para o seu caso.";
+    $("#meterText").textContent = "Escreva o que aconteceu que a gente mede a urgência do seu caso.";
     $("#meterReasons").innerHTML = "";
-    urgBlock.classList.remove("is-auto");
-    renderWarning();
     return;
   }
   const { score, level, reasons } = scoreDescription(text.length >= 10 ? text : "", tipo);
-  suggestion = level;
+  measured = true;
+  urgInput.value = LEVELS[level];
   meter.classList.remove("is-empty");
   meter.dataset.level = level;
   $("#meterFill").style.width = `${Math.max(6, score)}%`;
   $("#meterLevel").textContent = LEVELS[level];
   $("#meterText").innerHTML = text.length >= 10
-    ? `Pela sua descrição, isso parece urgência <b>${LEVELS[level]}</b>.`
+    ? `Pela sua descrição, isso é urgência <b>${LEVELS[level]}</b>. ${LEVEL_SLA[level]}`
     : `Pelo tipo escolhido, começa como <b>${LEVELS[level]}</b>. Descreva o problema para ajustar.`;
   $("#meterReasons").innerHTML = reasons.map((r) => `<li class="${r.dir}">${r.label}</li>`).join("");
-
-  if (!urgTouched) {
-    setLevel(level);
-    urgBlock.classList.add("is-auto");
-  } else {
-    renderWarning();
-  }
 }
 
 let analyzeTimer;
 desc.addEventListener("input", () => { clearTimeout(analyzeTimer); analyzeTimer = setTimeout(analyze, 250); });
 $("#tipo").addEventListener("change", analyze);
-urgRadios.forEach((r) => r.addEventListener("change", () => {
-  urgTouched = true;
-  urgBlock.classList.remove("is-auto");
-  renderHelp();
-}));
-$("#useSuggestion").addEventListener("click", () => {
-  urgTouched = false;
-  setLevel(suggestion);
-  urgBlock.classList.add("is-auto");
-});
-renderHelp();
 
 /* Validação */
 const rules = {
@@ -285,8 +219,7 @@ form.addEventListener("submit", async (e) => {
   data.protocolo = protocol();
   data.criadoEm = new Date().toISOString();
   data.origem = location.href;
-  data.urgenciaSugerida = suggestion !== null ? LEVELS[suggestion] : "-";
-  data.urgenciaAjustadaPeloCliente = urgTouched;
+  data.urgenciaPeloMedidor = measured;
 
   const resumo =
 `*Novo chamado Dev+*
@@ -300,7 +233,7 @@ Protocolo: ${data.protocolo}
 
 *Tipo:* ${data.tipo}
 *Sistema:* ${data.sistema}
-*Urgência:* ${data.urgencia}${data.urgenciaSugerida !== data.urgencia ? ` (medidor sugeriu ${data.urgenciaSugerida})` : ""}
+*Urgência:* ${data.urgencia}${measured ? "" : " (padrão, medidor sem dados)"}
 *Retorno por:* ${data.retorno}
 
 *Descrição:*
@@ -346,9 +279,7 @@ ${data.descricao}`;
 $("#newTicket").addEventListener("click", () => {
   form.reset();
   count.textContent = "0/2000";
-  urgTouched = false;
   analyze();
-  renderHelp();
   success.hidden = true;
   form.hidden = false;
   $("#nome").focus();
